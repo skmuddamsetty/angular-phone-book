@@ -1,0 +1,30 @@
+p {
+  font-family: Lato;
+}
+
+.container {
+  max-width: 550px;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 3px 3px 5px #aaaaaa;
+}
+
+.first-name {
+  margin-right: 5px;
+}
+
+.last-name {
+  font-weight: normal;
+}
+
+.total-contacts {
+  text-align: center;
+  color: #ccc;
+  font-weight: 100;
+}
+
+.toolbar {
+  float: right;
+}

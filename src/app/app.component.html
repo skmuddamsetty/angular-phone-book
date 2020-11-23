@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="toolbar">
+    <button mat-button color="primary" (click)="openDialog()">Add</button>
+  </div>
+  <h1>Contacts</h1>
+  <div class="contact-list">
+    <mat-list>
+      <div class="contact-box" *ngFor="let contact of contacts">
+        <mat-list-item>
+          <span class="first-name">{{contact.firstName | titlecase}}</span>
+          <span class="last-name">{{contact.lastName | titlecase}}</span>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+    <h2 class="total-contacts">{{contacts.length}} Contacts</h2>
+  </div>
+</div>
