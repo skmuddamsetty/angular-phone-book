@@ -28,8 +28,13 @@ export class ContactFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public contactData: Contact
   ) {
     this.contactForm = this.fb.group({
-      firstName: [contactData?.firstName, Validators.required],
-      lastName: [contactData?.lastName],
+      firstName: [
+        contactData && contactData.firstName ? contactData.firstName : "",
+        Validators.required
+      ],
+      lastName: [
+        contactData && contactData.lastName ? contactData.lastName : ""
+      ],
       company: [""],
       notes: [""],
       emails: this.fb.array([]),
