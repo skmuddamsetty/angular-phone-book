@@ -11,14 +11,14 @@
 		<form class="contact-form" [formGroup]="contactForm">
 			<mat-form-field class="contact-full-width">
 				<mat-label>First Name</mat-label>
-				<input matInput placeholder="Ex. John" name="firstName" formControlName="firstName">
+				<input matInput placeholder="Ex. John" name="firstName" formControlName="firstName" [(ngModel)]="contactData.firstName">
 				<mat-error *ngIf="firstName.touched && firstName.hasError('required')">
 					First Name is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
 			<mat-form-field class="contact-full-width">
 				<mat-label>Last Name</mat-label>
-				<input matInput placeholder="Ex. Doe" name="lastName" formControlName="lastName">
+				<input matInput placeholder="Ex. Doe" name="lastName" formControlName="lastName" [(ngModel)]="contactData.lastName">
 				<mat-error *ngIf="lastName.hasError('required')">
 					Last Name is <strong>required</strong>
 				</mat-error>
