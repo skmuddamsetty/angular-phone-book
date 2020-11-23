@@ -8,19 +8,25 @@
 		<mat-form-field class="contact-full-width">
 			<mat-label>First Name</mat-label>
 			<input matInput placeholder="Ex. John" name="firstName" formControlName="firstName">
-  </mat-form-field>
-			<mat-form-field class="contact-full-width">
-				<mat-label>Last Name</mat-label>
-				<input matInput placeholder="Ex. Doe" name="lastName" formControlName="lastName">
-  </mat-form-field>
-				<mat-form-field class="contact-full-width">
-					<mat-label>Company</mat-label>
-					<input matInput placeholder="Ex. Google" name="company" formControlName="company">
+			<mat-error *ngIf="firstName.hasError('required')">
+				First Name is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="contact-full-width">
+			<mat-label>Last Name</mat-label>
+			<input matInput placeholder="Ex. Doe" name="lastName" formControlName="lastName">
+			<mat-error *ngIf="lastName.hasError('required')">
+				Last Name is <strong>required</strong>
+			</mat-error>
+		</mat-form-field>
+		<mat-form-field class="contact-full-width">
+			<mat-label>Company</mat-label>
+			<input matInput placeholder="Ex. Google" name="company" formControlName="company">
   </mat-form-field>
 
-					<mat-form-field class="contact-full-width">
-						<mat-label>Notes</mat-label>
-						<textarea matInput placeholder="Ex. It makes me feel..." name="notes" formControlName="notes"></textarea>
-					</mat-form-field>
+			<mat-form-field class="contact-full-width">
+				<mat-label>Notes</mat-label>
+				<textarea matInput placeholder="Ex. It makes me feel..." name="notes" formControlName="notes"></textarea>
+			</mat-form-field>
 	</form>
 </mat-dialog-content>
