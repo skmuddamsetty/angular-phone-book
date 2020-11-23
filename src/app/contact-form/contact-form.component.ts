@@ -27,7 +27,9 @@ export class ContactFormComponent implements OnInit {
       lastName: [""],
       company: [""],
       notes: [""],
-      emails: this.fb.array([])
+      emails: this.fb.array([]),
+      phones: this.fb.array([]),
+      urls: this.fb.array([])
     });
   }
 
@@ -35,6 +37,14 @@ export class ContactFormComponent implements OnInit {
 
   get emails(): FormArray {
     return this.contactForm.get("emails") as FormArray;
+  }
+
+  get phones(): FormArray {
+    return this.contactForm.get("phones") as FormArray;
+  }
+
+  get urls(): FormArray {
+    return this.contactForm.get("urls") as FormArray;
   }
 
   get firstName() {
@@ -52,12 +62,48 @@ export class ContactFormComponent implements OnInit {
     });
   }
 
+  newPhone(): FormGroup {
+    return this.fb.group({
+      phone: ["", [Validators.required, Validators.pattern(/^[0-9]\d*$/)]]
+    });
+  }
+
+  newUrl(): FormGroup {
+    return this.fb.group({
+      url: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(
+            /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+          )
+        ]
+      ]
+    });
+  }
+
   addEmail() {
     this.emails.push(this.newEmail());
   }
 
+  addPhone() {
+    this.phones.push(this.newPhone());
+  }
+
+  addUrl() {
+    this.urls.push(this.newUrl());
+  }
+
   removeEmail(i: number) {
     this.emails.removeAt(i);
+  }
+
+  removePhone(i: number) {
+    this.phones.removeAt(i);
+  }
+
+  removeUrl(i: number) {
+    this.urls.removeAt(i);
   }
 
   displayDeleteEmailButton(i: number) {}

@@ -24,10 +24,28 @@
 				<mat-label>Company</mat-label>
 				<input matInput placeholder="Ex. Google" name="company" formControlName="company">
   </mat-form-field>
-				<button color="primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+				<button (click)="addPhone()" color="primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>add_circle</mat-icon>
         add phone
       </button>
+				<div formArrayName="phones">
+					<div *ngFor="let phone of phones.controls; let i=index">
+						<div [formGroupName]="i" class="dynamic-add-box">
+							<button mat-icon-button color="accent" (click)="removePhone(i)"><mat-icon>remove_circle</mat-icon></button>
+							<mat-form-field class="contact-full-width">
+								<mat-label>Phone Number</mat-label>
+								<input matInput placeholder="Ex. 123456789" name="phone" formControlName="phone">
+								<mat-error
+									*ngIf="getControl(i,'phones','phone').hasError('pattern') && !getControl(i,'phones','phone').hasError('required')">
+									Please enter a valid phone number
+								</mat-error>
+								<mat-error *ngIf="getControl(i,'phones','phone').hasError('required')">
+									Phone Number is <strong>required</strong>
+								</mat-error>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
 				<mat-divider></mat-divider>
 				<button (click)="addEmail()" color="primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>add_circle</mat-icon>
@@ -52,10 +70,28 @@
 					</div>
 				</div>
 				<mat-divider></mat-divider>
-				<button color="primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+				<button (click)="addUrl()" color="primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>add_circle</mat-icon>
         add url
       </button>
+				<div formArrayName="urls">
+					<div *ngFor="let url of urls.controls; let i=index">
+						<div [formGroupName]="i" class="dynamic-add-box">
+							<button mat-icon-button color="accent" (click)="removeUrl(i)"><mat-icon>remove_circle</mat-icon></button>
+							<mat-form-field class="contact-full-width">
+								<mat-label>URL</mat-label>
+								<input matInput placeholder="Ex. 123456789" name="url" formControlName="url">
+								<mat-error
+									*ngIf="getControl(i,'urls','url').hasError('pattern') && !getControl(i,'urls','url').hasError('required')">
+									Please enter a valid url
+								</mat-error>
+								<mat-error *ngIf="getControl(i,'urls','url').hasError('required')">
+									URL is <strong>required</strong>
+								</mat-error>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
 				<mat-divider></mat-divider>
 				<button color="primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
         <mat-icon>add_circle</mat-icon>
