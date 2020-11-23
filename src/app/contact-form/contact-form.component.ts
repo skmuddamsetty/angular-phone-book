@@ -62,7 +62,9 @@ export class ContactFormComponent implements OnInit {
 
   displayDeleteEmailButton(i: number) {}
 
-  getControl(i) {
-    return (<FormArray>this.contactForm.get("emails")).controls[i];
+  getControl(i, formGroup, formControl) {
+    return (<FormArray>this.contactForm.get(formGroup)).controls[i].get(
+      formControl
+    );
   }
 }
