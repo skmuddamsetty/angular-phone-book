@@ -29,6 +29,7 @@
     "@ngrx/store": "^9.2.0",
     "@ngrx/store-devtools": "^9.2.0",
     "@types/faker": "^4.1.12",
+    "animate.css": "^4.1.1",
     "bootstrap": "^4.5.0",
     "bulma": "^0.9.0",
     "faker": "^4.1.0",

@@ -30,9 +30,9 @@
       </button>
 				<div formArrayName="phones">
 					<div *ngFor="let phone of phones.controls; let i=index">
-						<div [formGroupName]="i" class="dynamic-add-box">
+						<div [formGroupName]="i" class="dynamic-add-box animate__animated animate__fadeInDown">
 							<button mat-icon-button color="accent" (click)="removePhone(i)"><mat-icon>remove_circle</mat-icon></button>
-							<mat-form-field class="contact-full-width">
+							<mat-form-field class="contact-full-width" appearance="fill">
 								<mat-label>Phone Number</mat-label>
 								<input matInput placeholder="Ex. 123456789" name="phone" formControlName="phone">
 								<mat-error
@@ -53,7 +53,7 @@
       </button>
 				<div formArrayName="emails">
 					<div *ngFor="let email of emails.controls; let i=index">
-						<div [formGroupName]="i" class="dynamic-add-box">
+						<div [formGroupName]="i" class="dynamic-add-box animate__animated animate__fadeInDown">
 							<button mat-icon-button color="accent" (click)="removeEmail(i)"><mat-icon>remove_circle</mat-icon></button>
 							<mat-form-field class="contact-full-width">
 								<mat-label>Email</mat-label>
@@ -76,7 +76,7 @@
       </button>
 				<div formArrayName="urls">
 					<div *ngFor="let url of urls.controls; let i=index">
-						<div [formGroupName]="i" class="dynamic-add-box">
+						<div [formGroupName]="i" class="dynamic-add-box animate__animated animate__fadeInDown">
 							<button mat-icon-button color="accent" (click)="removeUrl(i)"><mat-icon>remove_circle</mat-icon></button>
 							<mat-form-field class="contact-full-width">
 								<mat-label>URL</mat-label>
