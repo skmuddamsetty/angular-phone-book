@@ -36,3 +36,9 @@ button {
 .contact-full-width {
   width: 100%;
 }
+
+.dynamic-add-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

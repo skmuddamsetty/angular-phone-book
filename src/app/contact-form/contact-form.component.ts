@@ -1,11 +1,18 @@
 import { Component, OnInit } from "@angular/core";
 import {
+  FormArray,
   FormBuilder,
   FormControl,
+  FormGroup,
   FormGroupDirective,
   NgForm,
   Validators
 } from "@angular/forms";
+
+export interface Email {
+  typeOfEmail: string;
+  email: string;
+}
 
 @Component({
   selector: "app-contact-form",
@@ -20,14 +27,14 @@ export class ContactFormComponent implements OnInit {
       lastName: [""],
       company: [""],
       notes: [""],
-      email: ["", [Validators.required, Validators.email]]
+      emails: this.fb.array([])
     });
   }
 
   ngOnInit() {}
 
-  get email() {
-    return this.contactForm.get("email");
+  get emails(): FormArray {
+    return this.contactForm.get("emails") as FormArray;
   }
 
   get firstName() {
@@ -37,4 +44,21 @@ export class ContactFormComponent implements OnInit {
   get lastName() {
     return this.contactForm.get("lastName");
   }
+
+  newEmail(): FormGroup {
+    return this.fb.group({
+      typeOfEmail: [""],
+      email: ["", [Validators.required, Validators.email]]
+    });
+  }
+
+  addEmail() {
+    this.emails.push(this.newEmail());
+  }
+
+  removeEmail(i: number) {
+    this.emails.removeAt(i);
+  }
+
+  displayDeleteEmailButton(i: number) {}
 }

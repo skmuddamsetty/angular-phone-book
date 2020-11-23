@@ -29,8 +29,10 @@ export class AppComponent {
     const dialogRef = this.dialog.open(ContactFormComponent);
 
     dialogRef.afterClosed().subscribe((result: Contact) => {
-      this.contacts.push(result);
-      console.log(`Dialog result: ${JSON.stringify(result, null, 2)}`);
+      if (result) {
+        this.contacts.push(result);
+        console.log(`Dialog result: ${JSON.stringify(result, null, 2)}`);
+      }
     });
   }
 }
