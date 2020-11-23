@@ -1,7 +1,10 @@
 <div class="mat-dialog">
 	<mat-dialog-actions>
 		<button mat-button mat-dialog-close>Cancel</button>
-		<h2 mat-dialog-title>New Contact</h2>
+		<h2 mat-dialog-title *ngIf="contactData;else default">{{contactData.firstName}} {{contactData.lastName}}</h2>
+		<ng-template #default>
+			<h2 mat-dialog-title>New Contact</h2>
+		</ng-template>
 		<button mat-button [mat-dialog-close]="contactForm.value" color="primary" cdkFocusInitial [disabled]="contactForm.invalid">Save</button>
 	</mat-dialog-actions>
 	<mat-dialog-content class="mat-typography">

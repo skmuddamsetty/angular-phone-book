@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import {
   FormArray,
   FormBuilder,
@@ -8,6 +8,8 @@ import {
   NgForm,
   Validators
 } from "@angular/forms";
+import { MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { Contact } from "../app.component";
 
 export interface Email {
   typeOfEmail: string;
@@ -21,10 +23,13 @@ export interface Email {
 })
 export class ContactFormComponent implements OnInit {
   contactForm;
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public contactData: Contact
+  ) {
     this.contactForm = this.fb.group({
-      firstName: ["", Validators.required],
-      lastName: [""],
+      firstName: [contactData?.firstName, Validators.required],
+      lastName: [contactData?.lastName],
       company: [""],
       notes: [""],
       emails: this.fb.array([]),

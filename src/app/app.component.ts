@@ -2,7 +2,7 @@ import { Component, VERSION } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { ContactFormComponent } from "./contact-form/contact-form.component";
 
-interface Contact {
+export interface Contact {
   firstName: string;
   lastName: string;
 }
@@ -25,8 +25,10 @@ export class AppComponent {
     }
   ];
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ContactFormComponent);
+  openDialog(contact?: Contact) {
+    const dialogRef = this.dialog.open(ContactFormComponent, {
+      data: contact
+    });
 
     dialogRef.afterClosed().subscribe((result: Contact) => {
       if (result) {

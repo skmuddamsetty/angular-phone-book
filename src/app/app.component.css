@@ -28,3 +28,7 @@ p {
 .toolbar {
   float: right;
 }
+
+.contact-box {
+  cursor: pointer;
+}
