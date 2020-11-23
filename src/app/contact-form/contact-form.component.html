@@ -9,7 +9,7 @@
 			<mat-form-field class="contact-full-width">
 				<mat-label>First Name</mat-label>
 				<input matInput placeholder="Ex. John" name="firstName" formControlName="firstName">
-				<mat-error *ngIf="firstName.hasError('required')">
+				<mat-error *ngIf="firstName.touched && firstName.hasError('required')">
 					First Name is <strong>required</strong>
 				</mat-error>
 			</mat-form-field>
@@ -34,12 +34,13 @@
 							<button mat-icon-button color="accent" (click)="removePhone(i)"><mat-icon>remove_circle</mat-icon></button>
 							<mat-form-field class="contact-full-width" appearance="fill">
 								<mat-label>Phone Number</mat-label>
-								<input matInput placeholder="Ex. 123456789" name="phone" formControlName="phone">
+								<input matInput placeholder="Ex. 123456789" type="tel" name="phone" formControlName="phone">
 								<mat-error
 									*ngIf="getControl(i,'phones','phone').hasError('pattern') && !getControl(i,'phones','phone').hasError('required')">
 									Please enter a valid phone number
 								</mat-error>
-								<mat-error *ngIf="getControl(i,'phones','phone').hasError('required')">
+								<mat-error
+									*ngIf="getControl(i,'phones','phone').touched && getControl(i,'phones','phone').hasError('required')">
 									Phone Number is <strong>required</strong>
 								</mat-error>
 							</mat-form-field>
@@ -62,7 +63,8 @@
 									*ngIf="getControl(i,'emails','email').hasError('email') && !getControl(i,'emails','email').hasError('required')">
 									Please enter a valid email address
 								</mat-error>
-								<mat-error *ngIf="getControl(i,'emails','email').hasError('required')">
+								<mat-error
+									*ngIf="getControl(i,'emails','email').touched && getControl(i,'emails','email').hasError('required')">
 									Email is <strong>required</strong>
 								</mat-error>
 							</mat-form-field>
@@ -85,7 +87,8 @@
 									*ngIf="getControl(i,'urls','url').hasError('pattern') && !getControl(i,'urls','url').hasError('required')">
 									Please enter a valid url
 								</mat-error>
-								<mat-error *ngIf="getControl(i,'urls','url').hasError('required')">
+								<mat-error
+									*ngIf="getControl(i,'urls','url').touched && getControl(i,'urls','url').hasError('required')">
 									URL is <strong>required</strong>
 								</mat-error>
 							</mat-form-field>
